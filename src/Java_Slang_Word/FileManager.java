@@ -7,7 +7,7 @@ import java.util.*;
 
 public class FileManager {
     public static SlangWordList readFile(){
-        File file = new File("slang.txt");
+        File file = new File("slang1.txt");
         BufferedReader buff = null;
         boolean checkFile = file.exists();
 

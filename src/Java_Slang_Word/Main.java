@@ -1,10 +1,10 @@
 package Java_Slang_Word;
 
 public class Main {
-
+    public static  SlangWordList slangWordList;
     public static void main(String[] args){
-        SlangWordList x = FileManager.readFile();
-
+        slangWordList = FileManager.readFile();
+        new MainScreen();
         //HISTORY
 //        HistorySlangWord y = new HistorySlangWord();
 //
