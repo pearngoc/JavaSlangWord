@@ -27,7 +27,7 @@ public class ListSlangWordScreen extends JFrame implements ActionListener {
 
     public JPanel createAndShowGUI() {
         JPanel panel = new JPanel(new BorderLayout());
-        panel.setPreferredSize(new Dimension(640,500));
+        panel.setPreferredSize(new Dimension(740,500));
 
         JLabel la = new JLabel("LIST SLANG WORDS");
         la.setBackground(Color.white);
@@ -63,7 +63,7 @@ public class ListSlangWordScreen extends JFrame implements ActionListener {
 
     public void update(){
         int n = Main.slangWordList.getLength();
-        System.out.println("AAAA" + n);
+        //System.out.println("AAAA" + n);
         Object[][] data = new Object[n][3];
         int temp = 0;
         Iterator iter =Main.slangWordList.getListHashMap().entrySet().iterator();
@@ -82,8 +82,8 @@ public class ListSlangWordScreen extends JFrame implements ActionListener {
         TableModel tableModel = new DefaultTableModel(data, columsName);
         jTable.setModel(tableModel);
         jTable.getColumnModel().getColumn(0).setPreferredWidth(40);
-        jTable.getColumnModel().getColumn(1).setPreferredWidth(200);
-        jTable.getColumnModel().getColumn(2).setPreferredWidth(400);
+        jTable.getColumnModel().getColumn(1).setPreferredWidth(250);
+        jTable.getColumnModel().getColumn(2).setPreferredWidth(450);
     }
 
     @Override

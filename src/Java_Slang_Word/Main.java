@@ -9,19 +9,7 @@ public class Main {
         slangWordList = FileManager.readFile();
         historySlangWords = new ArrayList<>();
         new MainScreen();
-        //HISTORY
-//        HistorySlangWord y = new HistorySlangWord();
-//
-//        Scanner scanner = new Scanner(System.in);
-//        int count = 10;
-//        while(count != 0){
-//            List<String> item = new ArrayList<>();
-//            System.out.println("Input: ");
-//            String slang = scanner.next();
-//            item = x.searchSlang(slang);
-//            y.addSlangWord(slang, item);
-//            count--;
-//        }
+
 //
 //        y.exportHistory();
 
@@ -29,24 +17,7 @@ public class Main {
 
 
 
-        //      ADD SLANG WORD
-//        Scanner sc = new Scanner(System.in);
-//        ArrayList<String> a = new ArrayList<>();
-//        System.out.print("Nhap Slang: ");
-//        String s = sc.nextLine();
-//        while(true){
-//            String def;
-//            System.out.print("Nhap Definition: ");
-//            def = sc.nextLine();
-//            if(def.equals("-1"))
-//                break;
-//            a.add(def);
-//        }
-//        x.addSlangWord(new SlangWord(s, a));
-//        List<String> y = new ArrayList<>();
-//        y = x.searchSlang("ABC11");
-//
-//        System.out.println(y);
+
 
         //EDIT
 //        Scanner sc = new Scanner(System.in);

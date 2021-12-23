@@ -114,6 +114,9 @@ public class MainScreen extends JFrame implements ActionListener {
         }else if(e.getSource().equals(editBtn)){
             this.dispose();
             new ManageController();
+        }else if(e.getSource().equals(randomBtn)){
+            this.dispose();
+            new GameController();
         }
     }
 

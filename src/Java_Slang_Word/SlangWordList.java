@@ -81,8 +81,15 @@ public class SlangWordList {
         return randomSl;
     }
 
-    public ArrayList<String> getDefinition(String slang){
-        return (ArrayList<String>) listHashMap.get(slang);
+    public String getDefinition(String slang){
+        ArrayList<String> s = (ArrayList<String>) listHashMap.get(slang);
+        String def = "";
+        for(String temp: s){
+            def = def + temp + ", ";
+        }
+        return def.substring(0, def.length()-2);
+
+//        return (ArrayList<String>) listHashMap.get(slang);
     }
 
 
