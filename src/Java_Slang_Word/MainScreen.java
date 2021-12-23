@@ -108,6 +108,9 @@ public class MainScreen extends JFrame implements ActionListener {
         if(e.getSource().equals(searchBtn)){
             this.dispose();
             new SearchController();
+        }else if(e.getSource().equals(historyBtn)){
+            this.dispose();
+            new HistoryScreen();
         }
     }
 

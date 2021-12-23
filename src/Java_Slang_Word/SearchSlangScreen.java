@@ -4,7 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SearchSlangScreen extends JFrame implements ActionListener {
@@ -101,12 +104,16 @@ public class SearchSlangScreen extends JFrame implements ActionListener {
             String slang = jSlang.getText();
             List<String> y = new ArrayList<>();
             y = Main.slangWordList.searchSlang(slang);
+            DateTimeFormatter dft = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            LocalDateTime now = LocalDateTime.now();
+            String time = (dft.format(now)).toString();
             if(y == null){
                 jDefinition.setText("NOT FOUND");
-
+                Main.historySlangWords.add(new HistorySlangWord(time,slang,"","NOT FOUND"));
             }else{
                 String defi = y.toString().substring(1, y.toString().length()-1);
                 jDefinition.setText(defi);
+                Main.historySlangWords.add(new HistorySlangWord(time,slang,"",defi));
             }
         }else if(e.getSource().equals(cancelBtn)){
             this.dispose();

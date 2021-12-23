@@ -7,7 +7,7 @@ import java.util.*;
 
 public class FileManager {
     public static SlangWordList readFile(){
-        File file = new File("slang1.txt");
+        File file = new File("slang.txt");
         BufferedReader buff = null;
         boolean checkFile = file.exists();
 
@@ -21,6 +21,10 @@ public class FileManager {
                     sla = buff.readLine();
                     if(sla == null){
                         break;
+                    }
+                    int a = sla.indexOf('`');
+                    if(a < 0){
+                        System.out.println(sla);
                     }
                     // 0: slang, 1: definition
                     String slaItem[] = sla.split("`");

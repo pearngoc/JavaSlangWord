@@ -81,6 +81,12 @@ public class SearchController extends JFrame implements ActionListener {
         if(e.getSource().equals(searchSlangBtn)){
             this.dispose();
             new SearchSlangScreen();
+        }else if(e.getSource().equals(searchDefinitionBtn)){
+            this.dispose();
+            new SearchDefinitionScreen();
+        }else if(e.getSource().equals(cancelBtn)){
+            this.dispose();
+            new MainScreen();
         }
     }
 }
