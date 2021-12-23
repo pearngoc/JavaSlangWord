@@ -111,6 +111,9 @@ public class MainScreen extends JFrame implements ActionListener {
         }else if(e.getSource().equals(historyBtn)){
             this.dispose();
             new HistoryScreen();
+        }else if(e.getSource().equals(editBtn)){
+            this.dispose();
+            new ManageController();
         }
     }
 

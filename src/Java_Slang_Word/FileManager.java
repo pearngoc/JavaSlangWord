@@ -22,10 +22,6 @@ public class FileManager {
                     if(sla == null){
                         break;
                     }
-                    int a = sla.indexOf('`');
-                    if(a < 0){
-                        System.out.println(sla);
-                    }
                     // 0: slang, 1: definition
                     String slaItem[] = sla.split("`");
 

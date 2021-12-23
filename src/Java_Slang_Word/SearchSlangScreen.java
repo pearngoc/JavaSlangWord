@@ -112,6 +112,15 @@ public class SearchSlangScreen extends JFrame implements ActionListener {
                 Main.historySlangWords.add(new HistorySlangWord(time,slang,"","NOT FOUND"));
             }else{
                 String defi = y.toString().substring(1, y.toString().length()-1);
+                int i = 1;
+                String newSlang = slang + "(" + i + ")";
+                while(Main.slangWordList.searchSlang(newSlang)!=null){
+                    List<String> temp = Main.slangWordList.searchSlang(newSlang);
+                    String temp2 = temp.toString().substring(1, temp.toString().length()-1);
+                    defi = defi + ", " + temp2;
+                    ++i;
+                    newSlang = slang + "(" + i + ")";
+                }
                 jDefinition.setText(defi);
                 Main.historySlangWords.add(new HistorySlangWord(time,slang,"",defi));
             }

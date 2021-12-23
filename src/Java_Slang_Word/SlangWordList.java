@@ -5,6 +5,14 @@ import java.util.*;
 public class SlangWordList {
     private HashMap<String, List<String>> listHashMap;
 
+    public HashMap<String, List<String>> getListHashMap() {
+        return listHashMap;
+    }
+
+    public void setListHashMap(HashMap<String, List<String>> listHashMap) {
+        this.listHashMap = listHashMap;
+    }
+
     public SlangWordList(){
         listHashMap = new HashMap<>();
     }
@@ -13,6 +21,9 @@ public class SlangWordList {
     }
 
     public void deleteSlangWord(String slangWord){listHashMap.remove(slangWord);}
+
+    public void updateSlangWord(String slang, List<String> newDefinition){listHashMap.replace(slang, newDefinition);}
+
     public void exportListSlangWord(){
         Iterator iter = listHashMap.entrySet().iterator();
         while(iter.hasNext()){
@@ -27,9 +38,13 @@ public class SlangWordList {
         }
     }
 
+
     public List<String> searchSlang(String slang){
         return listHashMap.get(slang);
     }
+
+    public int getLength() {return listHashMap.size();}
+
     public String getSlangWord(ArrayList<String> s){
         Iterator iter = listHashMap.entrySet().iterator();
         while(iter.hasNext()){

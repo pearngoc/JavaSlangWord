@@ -27,18 +27,7 @@ public class Main {
 
         //x.exportListSlangWord();
 
-        // SEARCH SLANG
-//        List<String> y = new ArrayList<>();
-//        y = x.searchSlang(">_>");
 
-//            System.out.println(y);
-
-        //SEARCH DEFINITION
-//         ArrayList<String> y = x.searchDefinition("love you");
-//        int n = y.size();
-//        for(int i = 0; i < n; i++){
-//            System.out.println(y.get(i) + ": " + x.searchSlang(y.get(i)) );
-//        }
 
         //      ADD SLANG WORD
 //        Scanner sc = new Scanner(System.in);
@@ -83,16 +72,8 @@ public class Main {
 //
 //        System.out.println(y);
 
-        // DELETE
-//        Scanner sc = new Scanner(System.in);
-//        System.out.print("Moi ban nhap slang word muon xoa: ");
-//        String s = sc.nextLine();
-//
-//        x.deleteSlangWord(s);
-//
-//        List<String> y = new ArrayList<>();
-//        y = x.searchSlang(">_>");
-//        System.out.println(y);
+
+
 
         //RESET
 //        x = FileManager.readFile();
