@@ -42,7 +42,9 @@ public class RandomScreen extends JFrame implements ActionListener {
         body.setBackground(Color.white);
         String slang = Main.slangWordList.randomSlangWord();
         String def = Main.slangWordList.getDefinition(slang);
-        las = new JTextArea(3,20);
+        las = new JTextArea(3,15);
+        las.setAlignmentX(Component.CENTER_ALIGNMENT);
+        las.setAlignmentY(Component.CENTER_ALIGNMENT);
         las.setText(slang + " - " + def);
         las.setBackground(Color.white);
         las.setForeground(Color.GRAY);
@@ -52,7 +54,6 @@ public class RandomScreen extends JFrame implements ActionListener {
         las.setEditable(false);
         las.setFocusable(false);
         las.setFont(new Font("MV Boli", Font.PLAIN, 70));
-        las.setAlignmentX(JTextArea.CENTER_ALIGNMENT);
 
         body.add(las);
 
@@ -89,8 +90,12 @@ public class RandomScreen extends JFrame implements ActionListener {
         if(e.getSource().equals(resetBtn)){
             String slang = Main.slangWordList.randomSlangWord();
             String def = Main.slangWordList.getDefinition(slang);
+
             //las.setMaximumSize(new Dimension(250,250));
             las.setText(slang + " - " + def);
+            las.setAlignmentX(Component.CENTER_ALIGNMENT);
+            las.setAlignmentY(Component.CENTER_ALIGNMENT);
+
         }else if(e.getSource().equals(cancelBtn)){
             this.dispose();
             new GameController();

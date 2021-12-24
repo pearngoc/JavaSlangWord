@@ -88,9 +88,12 @@ public class SlangWordList {
             def = def + temp + ", ";
         }
         return def.substring(0, def.length()-2);
-
-//        return (ArrayList<String>) listHashMap.get(slang);
     }
+
+    public ArrayList<String> getDefinition2(String slang){
+        return (ArrayList<String>) listHashMap.get(slang);
+    }
+
 
 
 

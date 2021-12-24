@@ -105,6 +105,9 @@ public class GameController extends JFrame implements ActionListener {
         if(e.getSource().equals(randomBtn)){
             this.dispose();
             new RandomScreen();
+        }else if(e.getSource().equals(slangBtn)){
+            this.dispose();
+            new FunnyQuestionSlangScreen();
         }
     }
 }
