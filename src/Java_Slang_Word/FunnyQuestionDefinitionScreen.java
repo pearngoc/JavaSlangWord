@@ -1,5 +1,6 @@
 package Java_Slang_Word;
 
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -8,21 +9,22 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.*;
 
-public class FunnyQuestionSlangScreen extends JFrame implements ActionListener {
+public class FunnyQuestionDefinitionScreen extends JFrame implements ActionListener {
     private JButton ans1, ans2, ans3, ans4, nextBtn, cancelBtn;
-    private JLabel las, scoreLabel, heart1, heart2, heart3, highScoreLabel;
+    private JLabel scoreLabel, heart1, heart2, heart3, highScoreLabel;
+    private JTextArea las;
     public static int heartCount = 3;
     public static  int ansOfQuestion;
     public static int score = 0;
     public static int highScore = 0;
-    public FunnyQuestionSlangScreen(){
+    public FunnyQuestionDefinitionScreen(){
         try {
             setHighScore();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         setPreferredSize(new Dimension(1200,700));
-        setTitle("Game: SlangWord");
+        setTitle("Game: Definition");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         add(createAndShowGUI());
         //setDefaultLookAndFeelDecorated(true);
@@ -32,27 +34,26 @@ public class FunnyQuestionSlangScreen extends JFrame implements ActionListener {
     }
 
     public JPanel createAndShowGUI(){
-        Set<Object> obj = createDefi();
+        Random ran = new Random();
+        ansOfQuestion = ran.nextInt(4);
+        Set<Object> obj = createSlang();
+        ArrayList<String> listAns = convertArrayString(obj);
         JPanel panel = new JPanel(new BorderLayout());
-
-        JPanel header = new JPanel();
-        JLabel la = new JLabel("Funny Question with slang word?");
-        la.setBackground(Color.black);
-        la.setForeground(Color.orange);
-        la.setFont(new Font("MV Boli", Font.PLAIN, 25));
-        la.setOpaque(true);
 
         JPanel body = new JPanel(new BorderLayout());
         //câu hỏi
         body.setBackground(Color.white);
-        las = new JLabel();
-        String x = createSlang(obj);
-        las.setText("What is the definition of slang " + x + " ? ");
+        las = new JTextArea(2,40);
+        las.setText("What is the slang word of definition " + Main.slangWordList.getDefinition(listAns.get(ansOfQuestion)) + " ? ");
         las.setBackground(Color.white);
         las.setForeground(Color.blue);
         las.setFont(new Font("MV Boli", Font.PLAIN, 40));
+        las.setWrapStyleWord(true);
+        las.setLineWrap(true);
+        las.setOpaque(false);
+        las.setEditable(false);
+        las.setFocusable(false);
 
-        ArrayList<String> listAns = convertArrayString(obj);
         // câu trả lời
         JPanel ans = new JPanel();
         ans.setBackground(Color.white);
@@ -156,7 +157,6 @@ public class FunnyQuestionSlangScreen extends JFrame implements ActionListener {
         sco.add(highScoreLabel, gbc2);
 
 
-//        Icon icon2 = new ImageIcon("image/Heart-icon.png");
         JPanel heart = new JPanel(new GridLayout(3,1));
         heart.setBackground(Color.white);
         heart.setBorder(new EmptyBorder(30,30,30,30));
@@ -174,9 +174,9 @@ public class FunnyQuestionSlangScreen extends JFrame implements ActionListener {
         heart3 = new JLabel();
         heart3.setIcon(imageIcon);
 
-        heart.add(BorderLayout.PAGE_START, heart1);
-        heart.add(BorderLayout.CENTER, heart2);
-        heart.add(BorderLayout.PAGE_END, heart3);
+        heart.add(heart1);
+        heart.add(heart2);
+        heart.add(heart3);
 
 
         body.add(BorderLayout.PAGE_START, las);
@@ -184,7 +184,7 @@ public class FunnyQuestionSlangScreen extends JFrame implements ActionListener {
         body.add(BorderLayout.LINE_END, sco);
         body.add(BorderLayout.LINE_START, heart);
 
-        panel.add(BorderLayout.PAGE_START, header);
+        //panel.add(BorderLayout.PAGE_START, header);
         panel.add(BorderLayout.CENTER, body);
         panel.add(BorderLayout.PAGE_END, fo);
         return  panel;
@@ -194,37 +194,19 @@ public class FunnyQuestionSlangScreen extends JFrame implements ActionListener {
         Iterator<Object> i = ansObject.iterator();
         ArrayList<String> ansQuestion = new ArrayList<>();
         while(i.hasNext()){
-            ArrayList<String> b = (ArrayList<String>) i.next();
-            ansQuestion.add(String.join(" | ", b));
+            ansQuestion.add((String)i.next());
         }
         return ansQuestion;
     }
-    public Set<Object> createDefi(){
+    public Set<Object> createSlang(){
         Set<Object> ansObject = new HashSet<>();
         while(ansObject.size() != 4){
-            String randomAns = Main.slangWordList.randomSlangWord();
-            ArrayList<String> A = Main.slangWordList.getDefinition2(randomAns);
-            ansObject.add(A);
+            String slang = Main.slangWordList.randomSlangWord();
+            ansObject.add(slang);
         }
         return ansObject;
     }
-    public String createSlang(Set<Object> ansObject) {
-        Iterator<Object> k = ansObject.iterator();
-        Random rand = new Random();
-        ansOfQuestion = rand.nextInt(4);
-        int count = 0;
-        String slang = null;
-        while (count != 4 && k.hasNext()) {
-            if (ansOfQuestion == count) {
-                ArrayList<String> aaa = (ArrayList<String>) k.next();
-                slang = Main.slangWordList.getSlangWord(aaa);
-                break;
-            }
-            k.next();
-            ++count;
-        }
-        return slang;
-    }
+
     public void updateHeart1(){
         heart3.setIcon(null);
     }
@@ -270,6 +252,7 @@ public class FunnyQuestionSlangScreen extends JFrame implements ActionListener {
             }
             JOptionPane.showMessageDialog(null, "Lose game!. Your score is " + score);
             int choose = JOptionPane.showConfirmDialog(null, "Do you want to continue game?", "Notification", JOptionPane.YES_NO_OPTION);
+            heartCount = 3;
             resetGame();
             setDefaultButton();
             setLabel();
@@ -290,11 +273,12 @@ public class FunnyQuestionSlangScreen extends JFrame implements ActionListener {
         ans4.setBackground(Color.white);
     }
     public void setLabel(){
-        Set<Object> obj = createDefi();
+        Random ran = new Random();
+        ansOfQuestion = ran.nextInt(4);
+        Set<Object> obj = createSlang();
         ArrayList<String> listAns = convertArrayString(obj);
 
-        String x = createSlang(obj);
-        las.setText("What is the definition of slang " + x + "? ");
+        las.setText("What is the definition of slang " + Main.slangWordList.getDefinition(listAns.get(ansOfQuestion)) + "? ");
         ans1.setText(listAns.get(0));
         ans2.setText(listAns.get(1));
         ans3.setText(listAns.get(2));
@@ -304,7 +288,7 @@ public class FunnyQuestionSlangScreen extends JFrame implements ActionListener {
     public void setHighScore() throws FileNotFoundException {
         BufferedReader file = null;
         try {
-            file = new BufferedReader(new FileReader(new File("highscore.txt")));
+            file = new BufferedReader(new FileReader(new File("highscore1.txt")));
             String highScore1= file.readLine();
             highScore = Integer.parseInt(highScore1);
             file.close();
@@ -316,7 +300,7 @@ public class FunnyQuestionSlangScreen extends JFrame implements ActionListener {
     public void writeHighScore(String sc){
         BufferedWriter file = null;
         try {
-            file = new BufferedWriter(new FileWriter(new File("highscore.txt")));
+            file = new BufferedWriter(new FileWriter(new File("highscore1.txt")));
             file.write(sc);
             file.close();
         } catch (IOException e) {
@@ -403,3 +387,4 @@ public class FunnyQuestionSlangScreen extends JFrame implements ActionListener {
         }
     }
 }
+

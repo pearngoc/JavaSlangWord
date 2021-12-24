@@ -24,19 +24,19 @@ public class SlangWordList {
 
     public void updateSlangWord(String slang, List<String> newDefinition){listHashMap.replace(slang, newDefinition);}
 
-    public void exportListSlangWord(){
-        Iterator iter = listHashMap.entrySet().iterator();
-        while(iter.hasNext()){
-            Map.Entry mapElement = (Map.Entry)iter.next();
-            String slang = (String) mapElement.getKey();
-            List<String> definition = (List<String>) mapElement.getValue();
-            String def = "";
-            for(String x: definition){
-                def += x;
-            }
-            System.out.println(slang + ": " + def);
-        }
-    }
+//    public void exportListSlangWord(){
+//        Iterator iter = listHashMap.entrySet().iterator();
+//        while(iter.hasNext()){
+//            Map.Entry mapElement = (Map.Entry)iter.next();
+//            String slang = (String) mapElement.getKey();
+//            List<String> definition = (List<String>) mapElement.getValue();
+//            String def = "";
+//            for(String x: definition){
+//                def += x;
+//            }
+//            System.out.println(slang + ": " + def);
+//        }
+//    }
 
 
     public List<String> searchSlang(String slang){

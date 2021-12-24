@@ -109,7 +109,9 @@ public class SearchSlangScreen extends JFrame implements ActionListener {
             String time = (dft.format(now)).toString();
             if(y == null){
                 jDefinition.setText("NOT FOUND");
-                Main.historySlangWords.add(new HistorySlangWord(time,slang,"","NOT FOUND"));
+                HistorySlangWord sa = new HistorySlangWord(time,slang,"","NOT FOUND");
+                Main.historySlangWords.add(sa);
+                FileManager.saveHistory(sa);
             }else{
                 String defi = y.toString().substring(1, y.toString().length()-1);
                 int i = 1;
@@ -122,7 +124,9 @@ public class SearchSlangScreen extends JFrame implements ActionListener {
                     newSlang = slang + "(" + i + ")";
                 }
                 jDefinition.setText(defi);
-                Main.historySlangWords.add(new HistorySlangWord(time,slang,"",defi));
+                HistorySlangWord sa = new HistorySlangWord(time,slang," ",defi);
+                Main.historySlangWords.add(sa);
+                FileManager.saveHistory(sa);
             }
         }else if(e.getSource().equals(cancelBtn)){
             this.dispose();

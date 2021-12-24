@@ -108,6 +108,12 @@ public class GameController extends JFrame implements ActionListener {
         }else if(e.getSource().equals(slangBtn)){
             this.dispose();
             new FunnyQuestionSlangScreen();
+        }else if(e.getSource().equals(definitionBtn)){
+            this.dispose();
+            new FunnyQuestionDefinitionScreen();
+        }else if(e.getSource().equals(cancelBtn)){
+            this.dispose();
+            new MainScreen();
         }
     }
 }
