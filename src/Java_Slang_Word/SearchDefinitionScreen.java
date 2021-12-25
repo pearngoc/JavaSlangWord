@@ -129,7 +129,7 @@ public class SearchDefinitionScreen extends JFrame implements ActionListener {
             ArrayList<String> list = Main.slangWordList.searchDefinition(defi.trim());
             if(list == null){
                 JOptionPane.showMessageDialog(null, "Not slang word suit to definition: " + defi, "Notification", JOptionPane.INFORMATION_MESSAGE);
-                HistorySlangWord sa = new HistorySlangWord(time, defi, "NOT FOUND", "");
+                HistorySlangWord sa = new HistorySlangWord(time, defi, "NOT FOUND", " ");
                 Main.historySlangWords.add(sa);
                 FileManager.saveHistory(sa);
 

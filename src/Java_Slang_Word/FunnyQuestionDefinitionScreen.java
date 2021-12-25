@@ -298,6 +298,7 @@ public class FunnyQuestionDefinitionScreen extends JFrame implements ActionListe
     }
 
     public void writeHighScore(String sc){
+
         BufferedWriter file = null;
         try {
             file = new BufferedWriter(new FileWriter(new File("highscore1.txt")));

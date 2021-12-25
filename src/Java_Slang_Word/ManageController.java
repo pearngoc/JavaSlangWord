@@ -142,7 +142,7 @@ public class ManageController extends JFrame implements ActionListener {
             this.dispose();
             new EditScreen();
         }else if(e.getSource().equals(resetBtn)){
-            Main.slangWordList = FileManager.readFile();
+            Main.slangWordList = FileManager.readFile(2);
             JOptionPane.showMessageDialog(null, "Reset successfully!", "Notification", JOptionPane.INFORMATION_MESSAGE);
         }else if(e.getSource().equals(addBtn)){
             this.dispose();

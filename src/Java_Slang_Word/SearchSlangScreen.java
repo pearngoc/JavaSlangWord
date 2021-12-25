@@ -13,7 +13,7 @@ import java.util.List;
 public class SearchSlangScreen extends JFrame implements ActionListener {
     private JButton searchBtn, cancelBtn;
     private JTextField jSlang;
-    private JLabel jDefinition;
+    private JTextArea jDefinition;
     public SearchSlangScreen(){
         setTitle("Search by SlangWord");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -66,10 +66,17 @@ public class SearchSlangScreen extends JFrame implements ActionListener {
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.insets = new Insets(3,3,30,3);
-        jDefinition = new JLabel("");
+        jDefinition = new JTextArea(3, 20);
+
+
         jDefinition.setBackground(Color.white);
         jDefinition.setForeground(Color.BLACK);
         jDefinition.setFont(new Font("SansSerif", Font.PLAIN, 30));
+        jDefinition.setWrapStyleWord(true);
+        jDefinition.setLineWrap(true);
+        jDefinition.setOpaque(false);
+        jDefinition.setEditable(false);
+        jDefinition.setFocusable(false);
         jDefinition.setOpaque(true);
         body.add(jDefinition, gbc);
 
@@ -109,7 +116,7 @@ public class SearchSlangScreen extends JFrame implements ActionListener {
             String time = (dft.format(now)).toString();
             if(y == null){
                 jDefinition.setText("NOT FOUND");
-                HistorySlangWord sa = new HistorySlangWord(time,slang,"","NOT FOUND");
+                HistorySlangWord sa = new HistorySlangWord(time,slang," ","NOT FOUND");
                 Main.historySlangWords.add(sa);
                 FileManager.saveHistory(sa);
             }else{

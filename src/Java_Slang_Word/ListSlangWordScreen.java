@@ -15,7 +15,7 @@ import java.util.Map;
 public class ListSlangWordScreen extends JFrame implements ActionListener {
     private JTable jTable;
     private String[] columsName = {"No", "SlangWord", "Definition"};
-    private JButton cancelBtn;
+    private JButton cancelBtn, saveBtn;
     public ListSlangWordScreen(){
         setTitle("List Slang Word");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -51,8 +51,15 @@ public class ListSlangWordScreen extends JFrame implements ActionListener {
         cancelBtn.setFont(new Font("MV Boli", Font.PLAIN, 25));
         cancelBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         cancelBtn.addActionListener(this);
-        cancelBtn.setBorder(new EmptyBorder(10,10,10,10));
         footer.add(cancelBtn);
+        footer.add(Box.createRigidArea(new Dimension(30, 0)));
+
+
+        saveBtn = new JButton("Save");
+        saveBtn.setFont(new Font("MV Boli", Font.PLAIN, 25));
+        saveBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        saveBtn.addActionListener(this);
+        footer.add(saveBtn);
 
         panel.add(BorderLayout.PAGE_START, la);
         panel.add(BorderLayout.CENTER, scrollPane);
@@ -91,6 +98,9 @@ public class ListSlangWordScreen extends JFrame implements ActionListener {
         if(e.getSource().equals(cancelBtn)){
             this.dispose();
             new MainScreen();
+        }else if(e.getSource().equals(saveBtn)){
+            FileManager.saveNewSlang();
+            JOptionPane.showMessageDialog(null, "Save list slang word successfully!", "Save file",JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }

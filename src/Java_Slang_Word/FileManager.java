@@ -4,8 +4,19 @@ import java.io.*;
 import java.util.*;
 
 public class FileManager {
-    public static SlangWordList readFile(){
-        File file = new File("slang.txt");
+    public static SlangWordList readFile(int choose){
+        File file = null;
+        if(choose == 1){
+            File fi = new File("slangNew.txt");
+            if(fi.exists()){
+                file = fi;
+            }else{
+                file = new File("slang.txt");
+            }
+        }else if(choose == 2){
+            file = new File("slang.txt");
+        }
+        //File file = new File("slang.txt");
         BufferedReader buff = null;
         boolean checkFile = file.exists();
 
@@ -48,8 +59,8 @@ public class FileManager {
         BufferedWriter bw = null;
         try {
             File file = new File("history.txt");
-            if(file.createNewFile()){
-                System.out.println("File has been create. ");
+            if(!file.exists()){
+                file.createNewFile();
             }
             bw = new BufferedWriter(new FileWriter(file, true));
             bw.write(hsw.getTime() + ";" + hsw.getKeywordSearched()+ ";" + hsw.getSlang() + ";" + hsw.getDefinition() + "\n");
@@ -78,5 +89,31 @@ public class FileManager {
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    public static void saveNewSlang(){
+        Iterator iter = Main.slangWordList.getListHashMap().entrySet().iterator();
+        File file =  new File("slangNew.txt");
+        try {
+            if(!file.exists()){
+                file.createNewFile();
+            }
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+            while(iter.hasNext()){
+                Map.Entry mapElement = (Map.Entry)iter.next();
+                String slang = (String) mapElement.getKey();
+                List<String> definition = (List<String>) mapElement.getValue();
+                String def = "";
+                for(String x: definition){
+                    def = def + x + "| ";
+                }
+                bw.write(slang+"`");
+                bw.write(def.substring(0, def.length()-2) + "\n");
+            }
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
