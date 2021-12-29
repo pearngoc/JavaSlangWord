@@ -34,7 +34,7 @@ public class FileManager {
                     // 0: slang, 1: definition
                     String slaItem[] = sla.split("`");
 
-                    // process definition
+                    // tham khảo phần cắt chuỗi từ stackoverflow
                     String slaDefinition[] = slaItem[1].split("\\|");
 
                     arrayString = new ArrayList<String>();

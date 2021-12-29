@@ -33,6 +33,7 @@ public class SlangWordList {
 
     public int getLength() {return listHashMap.size();}
 
+    // tham khảo cách lấy key-value
     public String getSlangWord(ArrayList<String> s){
         Iterator iter = listHashMap.entrySet().iterator();
         while(iter.hasNext()){
@@ -46,6 +47,7 @@ public class SlangWordList {
         return null;
     }
 
+    // tham khảo các duyệt từ GFG
     public ArrayList<String> searchDefinition(String definition){
         ArrayList<String> x = new ArrayList<>();
         definition = definition.toLowerCase();
